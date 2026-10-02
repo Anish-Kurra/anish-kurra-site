@@ -229,7 +229,11 @@
   .date { font-family: 'Space Mono', monospace; font-size: 12px; color: #1f4e8c; }
   .card { background: #fffdf8; border: 1px solid #e6dccb; border-radius: 10px; }
   .ext { color: inherit; text-decoration: underline; text-decoration-color: #c9bda8; text-underline-offset: 3px; }
-  .ext:hover { color: #1f4e8c; text-decoration-color: #1f4e8c; }
+  :focus-visible { outline: 2px solid #1f4e8c; outline-offset: 3px; border-radius: 4px; }
+  input:focus, textarea:focus { border-color: #1f4e8c !important; }
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+  .card .row + .row { border-top: 1px solid #efe7da; }
   ::-webkit-scrollbar { width: 11px; }
   ::-webkit-scrollbar-thumb { background: #d9cfbe; border-radius: 99px; border: 3px solid #f7f2e8; }
 </style>
@@ -239,6 +243,8 @@
     html { overflow-x: clip; }
     main [style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 36px !important; }
     nav { flex-wrap: wrap; gap: 12px; padding: 14px 5vw !important; }
+    footer { padding-left: 5vw !important; padding-right: 5vw !important; }
+    main [style*="max-width: calc(1080px"] { max-width: none !important; }
     nav .navlinks { width: 100%; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     nav .navlinks::-webkit-scrollbar { display: none; }
     nav .navlinks > * { flex: 0 0 auto; white-space: nowrap; padding: 7px 10px !important; }
@@ -249,7 +255,7 @@
 
 <div style="min-height: 100vh; display: flex; flex-direction: column;">
 
-  <nav style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 18px 6vw; background: #f7f2e8; border-bottom: 1px solid #e6dccb;">
+  <nav style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 16px max(6vw, calc((100% - 1080px) / 2 + 6vw)); background: #f7f2e8; border-bottom: 1px solid #e6dccb;">
     <div sc-camel-on-click="{{ goHome }}" style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
       <div style="width: 38px; height: 38px; border-radius: 8px; background: #1f4e8c; color: #f7f2e8; display: flex; align-items: center; justify-content: center; font-family: 'Hanken Grotesk', sans-serif; font-weight: 700; font-size: 18px; line-height: 1; padding-bottom: 2px;">AK</div>
       <div style="font-weight: 600; font-size: 16px;">Anish Kurra</div>
@@ -266,13 +272,13 @@
     <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
     <div>
       <section style="padding: 9vh 6vw 9vh;">
-        <div style="display: grid; grid-template-columns: 1.25fr 0.9fr; gap: 60px; align-items: center; max-width: 1180px; margin: 0 auto;">
+        <div style="display: grid; grid-template-columns: 1.25fr 0.9fr; gap: 60px; align-items: center; max-width: calc(1080px - 12vw); margin: 0 auto;">
           <div>
             <h1 style="font-family: 'Hanken Grotesk', sans-serif; font-weight: 700; font-size: clamp(48px, 7vw, 92px); line-height: 0.98; letter-spacing: -1.5px; margin: 0 0 22px;">Anish Kurra</h1>
             <p style="font-size: clamp(17px, 1.7vw, 21px); line-height: 1.55; color: #4f4a43; max-width: 520px; margin: 0 0 34px;">Sophomore at Wayzata High School, class of 2029. I'm interested in <span style="color: #1f1d1a; font-weight: 600;">neuroscience, medicine and health literacy</span>.</p>
             <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-              <button sc-camel-on-click="{{ goConnect }}" style="padding: 13px 22px; border: 1.5px solid #1f4e8c; border-radius: 8px; background: #1f4e8c; color: #fff; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit;" style-hover="background: #173c6c; border-color: #173c6c;">Contact me</button>
-              <button sc-camel-on-click="{{ goExperience }}" style="padding: 13px 22px; border: 1.5px solid #c9bda8; border-radius: 8px; background: transparent; color: #1f1d1a; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit;" style-hover="border-color: #1f4e8c; color: #1f4e8c;">View experience</button>
+              <button sc-camel-on-click="{{ goConnect }}" style="padding: 13px 22px; border: 1.5px solid #1f4e8c; border-radius: 8px; background: #1f4e8c; color: #fff; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit;">Contact me</button>
+              <button sc-camel-on-click="{{ goExperience }}" style="padding: 13px 22px; border: 1.5px solid #c9bda8; border-radius: 8px; background: transparent; color: #1f1d1a; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit;">View experience</button>
             </div>
           </div>
           <div style="background: #1f3557; color: #f7f2e8; border-radius: 14px; padding: 30px 32px;">
@@ -290,11 +296,11 @@
       </section>
 
       <section style="padding: 0 6vw 9vh; background: #fffdf8; border-top: 1px solid #e6dccb;">
-        <div style="max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 220px 1fr; gap: 70px; align-items: start; padding-top: 8vh;">
+        <div style="max-width: calc(1080px - 12vw); margin: 0 auto; display: grid; grid-template-columns: 220px 1fr; gap: 70px; align-items: start; padding-top: 8vh;">
           <div>
             <img src="/assets/headshot.webp" alt="Anish Kurra" width="200" height="200" style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; display: block;">
           </div>
-          <div style="font-size: 17px; line-height: 1.7; color: #4f4a43;">
+          <div style="font-size: 17px; line-height: 1.7; color: #4f4a43; max-width: 620px;">
             <h2 style="font-family: 'Hanken Grotesk', sans-serif; font-weight: 700; font-size: clamp(30px, 3.6vw, 42px); line-height: 1.08; letter-spacing: -0.5px; margin: 0 0 22px; color: #1f1d1a;">About me</h2>
             <p style="margin: 0 0 20px;">I'm a sophomore at Wayzata High School in Corcoran, Minnesota. I co-founded <a class="ext" href="https://www.project-ana.org/" target="_blank" rel="noopener">Project ANA</a>, a nonprofit working on eating disorders that go undiagnosed in men, and I'm a research intern at the University of North Dakota and the University of Iowa.</p>
             <p style="margin: 0 0 20px;">I'm also building Gibby, a physics-informed model that predicts Gibbs free energy and binding affinity. Outside of that, I write children's books, spend time with friends and watch tennis.</p>
@@ -307,7 +313,7 @@
 
     <sc-if value="{{ isExperience }}" hint-placeholder-val="{{ true }}">
     <div style="padding: 8vh 6vw; max-width: 1080px; margin: 0 auto;">
-      <h2 style="font-family: 'Hanken Grotesk', sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 56px); letter-spacing: -1px; margin: 0 0 44px;">Experience and education</h2>
+      <h2 style="font-family: 'Hanken Grotesk', sans-serif; font-weight: 700; font-size: clamp(34px, 4.4vw, 48px); letter-spacing: -1px; margin: 0 0 40px;">Experience and education</h2>
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start;">
         <div>
           <h3 class="lbl">Research</h3>
@@ -373,13 +379,13 @@
 
     <sc-if value="{{ isHonors }}" hint-placeholder-val="{{ true }}">
     <div style="padding: 8vh 6vw; max-width: 1080px; margin: 0 auto;">
-      <h2 style="font-family: 'Hanken Grotesk', sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 56px); letter-spacing: -1px; margin: 0 0 44px;">Honors and awards</h2>
+      <h2 style="font-family: 'Hanken Grotesk', sans-serif; font-weight: 700; font-size: clamp(34px, 4.4vw, 48px); letter-spacing: -1px; margin: 0 0 40px;">Honors and awards</h2>
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 22px; align-items: start;">
         <sc-for list="{{ honorGroups }}" as="g" hint-placeholder-count="2">
-          <div class="card" style="padding: 28px 30px 14px;">
-            <h3 style="font-family: 'Hanken Grotesk', sans-serif; font-weight: 700; font-size: 24px; margin: 0 0 16px; color: #1f4e8c;">{{ g.title }}</h3>
+          <div class="card" style="padding: 24px 28px 12px;">
+            <h3 style="font-family: 'Hanken Grotesk', sans-serif; font-weight: 700; font-size: 21px; margin: 0 0 6px; color: #1f1d1a;">{{ g.title }}</h3>
             <sc-for list="{{ g.items }}" as="h" hint-placeholder-count="4">
-              <div style="padding: 13px 0; border-top: 1px solid #efe7da; font-size: 15.5px; color: #2f2b27; line-height: 1.45;">
+              <div class="row" style="padding: 13px 0; font-size: 15.5px; color: #2f2b27; line-height: 1.45;">
                 <sc-if value="{{ h.url }}"><a class="ext" href="{{ h.url }}" target="_blank" rel="noopener">{{ h.text }}</a></sc-if><sc-if value="{{ !h.url }}">{{ h.text }}</sc-if>
               </div>
             </sc-for>
@@ -391,7 +397,7 @@
 
     <sc-if value="{{ isSkills }}" hint-placeholder-val="{{ true }}">
     <div style="padding: 8vh 6vw; max-width: 1080px; margin: 0 auto;">
-      <h2 style="font-family: 'Hanken Grotesk', sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 56px); letter-spacing: -1px; margin: 0 0 44px;">Skills and interests</h2>
+      <h2 style="font-family: 'Hanken Grotesk', sans-serif; font-weight: 700; font-size: clamp(34px, 4.4vw, 48px); letter-spacing: -1px; margin: 0 0 40px;">Skills and interests</h2>
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 56px 64px; align-items: start;">
         <div>
           <sc-for list="{{ skillGroups }}" as="g" hint-placeholder-count="2">
@@ -409,7 +415,7 @@
           <h3 class="lbl" style="margin-bottom: 12px;">Languages</h3>
           <div class="card" style="padding: 4px 22px; margin-bottom: 34px;">
             <sc-for list="{{ languages }}" as="l" hint-placeholder-count="3">
-              <div style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-top: 1px solid #efe7da;">
+              <div class="row" style="display: flex; justify-content: space-between; align-items: center; padding: 14px 0;">
                 <span style="font-size: 16px; font-weight: 600;">{{ l.name }}</span>
                 <span style="font-size: 14.5px; color: #1f4e8c;">{{ l.level }}</span>
               </div>
@@ -418,7 +424,7 @@
           <h3 class="lbl" style="margin-bottom: 12px;">Interests</h3>
           <div style="display: flex; flex-wrap: wrap; gap: 8px;">
             <sc-for list="{{ interests }}" as="it" hint-placeholder-count="7">
-              <div style="padding: 8px 13px; border: 1px solid #d9cfbe; border-radius: 6px; font-size: 14.5px; color: #4f4a43;">{{ it }}</div>
+              <div style="padding: 8px 13px; background: #fffdf8; border: 1px solid #e6dccb; border-radius: 6px; font-size: 14.5px; color: #2f2b27;">{{ it }}</div>
             </sc-for>
           </div>
         </div>
@@ -430,12 +436,12 @@
     <div style="padding: 8vh 6vw; max-width: 1080px; margin: 0 auto;">
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start;">
         <div>
-          <h2 style="font-family: 'Hanken Grotesk', sans-serif; font-weight: 700; font-size: clamp(36px, 5vw, 56px); letter-spacing: -1px; margin: 0 0 18px;">Contact</h2>
+          <h2 style="font-family: 'Hanken Grotesk', sans-serif; font-weight: 700; font-size: clamp(34px, 4.4vw, 48px); letter-spacing: -1px; margin: 0 0 18px;">Contact</h2>
           <p style="color: #4f4a43; font-size: 17px; line-height: 1.6; margin: 0 0 30px; max-width: 420px;">If you're working on something in biology or healthcare, or you have an opportunity or question for me, email is the fastest way to reach me.</p>
           <a href="mailto:anishkurra@gmail.com" style="display: inline-block; font-size: 18px; font-weight: 600; color: #1f4e8c; text-decoration: none; padding-bottom: 4px; border-bottom: 2px solid #1f4e8c; margin-bottom: 30px;">anishkurra@gmail.com</a>
           <div style="display: flex; gap: 12px; margin-top: 8px;">
             <sc-for list="{{ socials }}" as="so" hint-placeholder-count="2">
-              <a href="{{ so.url }}" target="_blank" rel="noopener" style="padding: 11px 18px; background: #fffdf8; border: 1px solid #e6dccb; border-radius: 8px; text-decoration: none; color: #1f1d1a; font-size: 15px; font-weight: 600;" style-hover="border-color: #1f4e8c; color: #1f4e8c;">{{ so.label }}</a>
+              <a href="{{ so.url }}" target="_blank" rel="noopener" style="padding: 11px 18px; background: #fffdf8; border: 1px solid #e6dccb; border-radius: 8px; text-decoration: none; color: #1f1d1a; font-size: 15px; font-weight: 600;">{{ so.label }}</a>
             </sc-for>
           </div>
         </div>
@@ -444,13 +450,13 @@
           <div style="font-size: 14.5px; color: #6b655c; margin-bottom: 22px; line-height: 1.5;">This opens your email app with the message filled in, so you can send it from there.</div>
           <div style="margin-bottom: 16px;">
             <label for="cf-name" style="font-size: 14px; font-weight: 600; display: block; margin-bottom: 7px;">Your name</label>
-            <input id="cf-name" value="{{ fName }}" sc-camel-on-input="{{ setName }}" style="width: 100%; padding: 12px 14px; border: 1px solid #d9cfbe; border-radius: 8px; font-family: inherit; font-size: 15px; background: #f7f2e8; outline: none; color: #1f1d1a;" style-focus="border-color: #1f4e8c;">
+            <input id="cf-name" value="{{ fName }}" sc-camel-on-input="{{ setName }}" style="width: 100%; padding: 12px 14px; border: 1px solid #d9cfbe; border-radius: 8px; font-family: inherit; font-size: 15px; background: #f7f2e8; outline: none; color: #1f1d1a;">
           </div>
           <div style="margin-bottom: 22px;">
             <label for="cf-msg" style="font-size: 14px; font-weight: 600; display: block; margin-bottom: 7px;">Message</label>
-            <textarea id="cf-msg" value="{{ fMsg }}" sc-camel-on-input="{{ setMsg }}" rows="5" style="width: 100%; padding: 12px 14px; border: 1px solid #d9cfbe; border-radius: 8px; font-family: inherit; font-size: 15px; background: #f7f2e8; outline: none; resize: vertical; color: #1f1d1a;" style-focus="border-color: #1f4e8c;"></textarea>
+            <textarea id="cf-msg" value="{{ fMsg }}" sc-camel-on-input="{{ setMsg }}" rows="5" style="width: 100%; padding: 12px 14px; border: 1px solid #d9cfbe; border-radius: 8px; font-family: inherit; font-size: 15px; background: #f7f2e8; outline: none; resize: vertical; color: #1f1d1a;"></textarea>
           </div>
-          <a href="{{ mailto }}" style="display: block; text-align: center; padding: 14px; border-radius: 8px; background: #1f4e8c; color: #fff; font-size: 15px; font-weight: 600; text-decoration: none;" style-hover="background: #173c6c;">Open in email</a>
+          <a href="{{ mailto }}" style="display: block; text-align: center; padding: 14px; border-radius: 8px; background: #1f4e8c; color: #fff; font-size: 15px; font-weight: 600; text-decoration: none;">Open in email</a>
         </div>
       </div>
     </div>
@@ -458,7 +464,7 @@
 
   </main>
 
-  <footer style="border-top: 1px solid #e6dccb; padding: 28px 6vw; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 14px; color: #6b655c;">
+  <footer style="border-top: 1px solid #e6dccb; padding: 28px max(6vw, calc((100% - 1080px) / 2 + 6vw)); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 14px; color: #6b655c;">
     <div>© 2026 Anish Kurra</div>
     <a class="ext" href="mailto:anishkurra@gmail.com">anishkurra@gmail.com</a>
   </footer>
@@ -494,7 +500,7 @@ class Component extends DCLogic {
     ];
 
     const projects = [
-      { name: 'Gibby', period: 'August 2026 – present', role: 'Founder and lead developer', detail: 'Physics-informed models for Gibbs free energy (G, ΔG, ΔΔG) and binding affinity: quantum-chemical solvation corrected by a graph neural network and gradient-boosted trees. Solvation free energy is within 0.60 kcal/mol on average across 107 solvents (0.78 in water) on molecules held out from fitting. Available as a ChimeraX extension and a standalone website.' },
+      { name: 'Gibby', period: 'August 2026 – present', role: 'Founder & Lead Developer', detail: 'Physics-informed models for Gibbs free energy (G, ΔG, ΔΔG) and binding affinity: quantum-chemical solvation corrected by a graph neural network and gradient-boosted trees. Solvation free energy is within 0.60 kcal/mol on average across 107 solvents (0.78 in water) on molecules held out from fitting. Available as a ChimeraX extension and a standalone website.' },
       { name: 'Books4STEM Book Series', period: 'June 2026 – present', role: 'Cofounder', detail: 'Authored or edited 10+ children’s books on the intersection of math and medicine, published on Amazon Kindle and in paperback.' },
     ];
 
@@ -540,10 +546,10 @@ class Component extends DCLogic {
 
     const current = [
       { role: 'Co-founder', org: 'Project ANA' },
-      { role: 'Research intern', org: 'University of North Dakota' },
-      { role: 'Research intern', org: 'University of Iowa' },
-      { role: 'Department lead', org: 'IYNA' },
-      { role: 'Executive assistant', org: 'Dr. Interested' },
+      { role: 'Research Intern', org: 'University of North Dakota' },
+      { role: 'Research Intern', org: 'University of Iowa' },
+      { role: 'Department Lead', org: 'IYNA' },
+      { role: 'Executive Assistant', org: 'Dr. Interested' },
     ];
 
     const subject = 'Hello from ' + (this.state.fName.trim() || 'your website');
