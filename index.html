@@ -507,7 +507,7 @@
                 <div style="position: absolute; left: -26px; top: 5px; width: 11px; height: 11px; border-radius: 50%; background: var(--ak, #d1314b); border: 3px solid #faf8f5;"></div>
                 <div style="font-family: 'Space Mono', monospace; font-size: 11px; color: var(--ak, #d1314b); letter-spacing: 0.5px;">{{ e.period }}</div>
                 <div style="font-weight: 600; font-size: 18px; margin: 5px 0 2px;">{{ e.role }}</div>
-                <div style="font-size: 14px; color: #8a827b; margin-bottom: 8px;">{{ e.org }}</div>
+                <sc-if value="{{ e.url }}"><a href="{{ e.url }}" target="_blank" rel="noopener" style="display: inline-block; font-size: 14px; color: #8a827b; margin-bottom: 8px; text-decoration: underline; text-decoration-color: #d8d0c7; text-underline-offset: 3px;" style-hover="color: var(--ak, #d1314b); text-decoration-color: var(--ak, #d1314b);">{{ e.org }} ↗</a></sc-if><sc-if value="{{ !e.url }}"><div style="font-size: 14px; color: #8a827b; margin-bottom: 8px;">{{ e.org }}</div></sc-if>
                 <div style="font-size: 14.5px; color: #5f5852; line-height: 1.55;">{{ e.desc }}</div>
               </div>
             </sc-for>
@@ -520,7 +520,7 @@
                 <div style="position: absolute; left: -26px; top: 5px; width: 11px; height: 11px; border-radius: 50%; background: var(--ak, #d1314b); border: 3px solid #faf8f5;"></div>
                 <div style="font-family: 'Space Mono', monospace; font-size: 11px; color: var(--ak, #d1314b); letter-spacing: 0.5px;">{{ e.period }}</div>
                 <div style="font-weight: 600; font-size: 18px; margin: 5px 0 2px;">{{ e.role }}</div>
-                <div style="font-size: 14px; color: #8a827b; margin-bottom: 8px;">{{ e.org }}</div>
+                <sc-if value="{{ e.url }}"><a href="{{ e.url }}" target="_blank" rel="noopener" style="display: inline-block; font-size: 14px; color: #8a827b; margin-bottom: 8px; text-decoration: underline; text-decoration-color: #d8d0c7; text-underline-offset: 3px;" style-hover="color: var(--ak, #d1314b); text-decoration-color: var(--ak, #d1314b);">{{ e.org }} ↗</a></sc-if><sc-if value="{{ !e.url }}"><div style="font-size: 14px; color: #8a827b; margin-bottom: 8px;">{{ e.org }}</div></sc-if>
                 <div style="font-size: 14.5px; color: #5f5852; line-height: 1.55;">{{ e.desc }}</div>
               </div>
             </sc-for>
@@ -541,7 +541,7 @@
           <sc-for list="{{ volunteering }}" as="v" hint-placeholder-count="2">
             <div style="background: #fff; border: 1px solid #ece6df; border-radius: 16px; padding: 22px 24px; margin-bottom: 16px; animation: fadeUp 0.6s both; animation-delay: {{ v.delay }};" style-hover="border-color: var(--ak, #d1314b); transform: translateY(-3px);">
               <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px;">
-                <div style="font-weight: 600; font-size: 17px;">{{ v.org }}</div>
+                <sc-if value="{{ v.url }}"><a href="{{ v.url }}" target="_blank" rel="noopener" style="font-weight: 600; font-size: 17px; color: inherit; text-decoration: underline; text-decoration-color: #d8d0c7; text-underline-offset: 3px;" style-hover="color: var(--ak, #d1314b);">{{ v.org }} ↗</a></sc-if><sc-if value="{{ !v.url }}"><div style="font-weight: 600; font-size: 17px;">{{ v.org }}</div></sc-if>
                 <div style="font-family: 'Space Mono', monospace; font-size: 11px; color: var(--ak, #d1314b); white-space: nowrap;">{{ v.hours }}</div>
               </div>
               <div style="font-size: 13px; color: #8a827b; margin-top: 4px;">{{ v.role }}</div>
@@ -579,7 +579,7 @@
             <sc-for list="{{ g.items }}" as="h" hint-placeholder-count="4">
               <div style="display: flex; gap: 13px; padding: 13px 0; border-top: 1px solid #f1ece6;">
                 <span style="font-family: 'Space Mono', monospace; font-size: 12px; color: var(--ak, #d1314b); font-weight: 700; flex-shrink: 0; padding-top: 2px;">{{ h.tag }}</span>
-                <span style="font-size: 15px; color: #3a3531; line-height: 1.45;">{{ h.text }}</span>
+                <sc-if value="{{ h.url }}"><a href="{{ h.url }}" target="_blank" rel="noopener" style="font-size: 15px; color: #3a3531; line-height: 1.45; text-decoration: underline; text-decoration-color: #d8d0c7; text-underline-offset: 3px;" style-hover="color: var(--ak, #d1314b);">{{ h.text }} ↗</a></sc-if><sc-if value="{{ !h.url }}"><span style="font-size: 15px; color: #3a3531; line-height: 1.45;">{{ h.text }}</span></sc-if>
               </div>
             </sc-for>
           </div>
@@ -715,9 +715,9 @@ class Component extends DCLogic {
     ];
 
     const leadership = [
-      { period: 'DEC 2025–PRESENT', role: 'Co-founder', org: 'Project ANA', desc: '501(c)(3) nonprofit addressing eating-disorder underdiagnosis in men. Co-lead 30+ members across research, advocacy (1400+ followers) and operations; co-authored a scoping review on OSF, with 2 IEEE conference papers in review. Connected with ANAD and NEDA and 10+ universities in 6 countries.', delay: '0.16s' },
-      { period: 'AUG 2025–PRESENT', role: 'Department Lead', org: 'International Youth Neuroscience Association (IYNA)', desc: 'Lead 20+ journal editors and handle submissions to the IYNA Journal. Co-organized the Neuroethics Essay Contest, the IYNA Ideathon and the youth neuroscience summer course; onboarded ~10 volunteers for Brain Bee Bootcamp. Moderator of the 9300+ member Discord.', delay: '0.20s' },
-      { period: 'DEC 2025–PRESENT', role: 'Executive Assistant', org: 'Dr. Interested', desc: 'UNESCO-recognized youth-in-medicine nonprofit (~1700 members). Organized 4 partnerships with 295+ signups, helped plan 3 in-person events with 300+ attendees, and help manage 35+ volunteers.', delay: '0.24s' },
+      { period: 'DEC 2025–PRESENT', role: 'Co-founder', org: 'Project ANA', url: 'https://www.project-ana.org/', desc: '501(c)(3) nonprofit addressing eating-disorder underdiagnosis in men. Co-lead 30+ members across research, advocacy (1400+ followers) and operations. Connected with ANAD and NEDA and 10+ universities in 6 countries.', delay: '0.16s' },
+      { period: 'AUG 2025–PRESENT', role: 'Department Lead', org: 'International Youth Neuroscience Association (IYNA)', url: 'https://youthneuro.org', desc: 'Lead 20+ journal editors and handle submissions to the IYNA Journal. Co-organized the Neuroethics Essay Contest, the IYNA Ideathon and the youth neuroscience summer course; onboarded ~10 volunteers for Brain Bee Bootcamp. Moderator of the 9300+ member Discord.', delay: '0.20s' },
+      { period: 'DEC 2025–PRESENT', role: 'Executive Assistant', org: 'Dr. Interested', url: 'https://www.drinterested.org/members', desc: 'UNESCO-recognized youth-in-medicine nonprofit (~1700 members). Organized 4 partnerships with 295+ signups, helped plan 3 in-person events with 300+ attendees, and help manage 35+ volunteers.', delay: '0.24s' },
       { period: 'MAY 2025–PRESENT', role: 'CLO', org: 'Biocataalysis', desc: 'Help lead a 300+ participant biology competition; support 40+ staff plus outreach and partnerships.', delay: '0.28s' },
     ];
 
@@ -732,7 +732,7 @@ class Component extends DCLogic {
 
     const volunteering = [
       { org: 'HSMN', hours: '375+ HRS', role: 'Public Engagement Intern & Volunteer', detail: '4th-largest Hindu temple in North America. Front desk, gift shop and food service; organized ~6 events with 1500+ attendance.', delay: '0.16s' },
-      { org: 'North Memorial Maple Grove Hospital', hours: '360+ HRS', role: 'Nurse Server Attendant & Gift Shop', detail: '<40% acceptance. Gift-shop trainer; led volunteer sessions and a children\u2019s-book drive (25+ books donated).', delay: '0.24s' },
+      { org: 'North Memorial Maple Grove Hospital', url: 'https://northmemorial.com/', hours: '360+ HRS', role: 'Nurse Server Attendant & Gift Shop', detail: '<40% acceptance. Gift-shop trainer; led volunteer sessions and a children\u2019s-book drive (25+ books donated).', delay: '0.24s' },
     ];
 
     const honorGroups = [
@@ -740,7 +740,7 @@ class Component extends DCLogic {
         { tag: 'USABO', text: 'USA Biology Olympiad Participant' },
         { tag: 'AMC 10', text: 'AMC 10, Top 25%' },
         { tag: 'JHU', text: 'GHLC @ Johns Hopkins, accepted (<10%)' },
-        { tag: 'Leaf', text: 'Leaf Summer Program, accepted (<10%)' },
+        { tag: 'Leaf', text: 'Leaf Summer Program, accepted (<10%)', url: 'https://leaf.courses/faq' },
       ]},
       { title: 'Service & Leadership', delay: '0.2s', items: [
         { tag: 'GOLD', text: 'Presidential Volunteer Service Award, Gold' },
