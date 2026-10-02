@@ -402,7 +402,6 @@
       <sc-for list="{{ navItems }}" as="item" hint-placeholder-count="5">
         <button sc-camel-on-click="{{ item.go }}" style="{{ item.style }}">{{ item.label }}</button>
       </sc-for>
-      <a href="assets/Anish_Kurra_Resume.pdf" download="" style="margin-left: 10px; padding: 9px 17px; border-radius: 99px; background: var(--ak, #d1314b); color: #fff; font-size: 13px; font-weight: 600; text-decoration: none; display: inline-flex; align-items: center; gap: 7px;" style-hover="background: #b32841;">Resume ↓</a>
     </div>
   </nav>
 
@@ -687,19 +686,23 @@ class Component extends DCLogic {
     ];
 
     const experience = [
-      { period: 'DEC 2025–PRESENT', role: 'Co-founder', org: 'Project ANA', desc: 'Co-founded a nonprofit addressing eating-disorder underdiagnosis in men. Lead 115+ members across research and advocacy; paper submitted to EEDR.', delay: '0.08s' },
-      { period: 'AUG 2025–PRESENT', role: 'Volunteer', org: 'IYNA (youth neuroscience)', desc: "Co-lead of the Journal Department at the International Youth Neuroscience Association (9k+ members). Hired and managed 15+ editors and journalists; shipped monthly issues.", delay: '0.14s' },
-      { period: 'DEC 2025–PRESENT', role: 'Executive Assistant', org: 'Dr. Interested', desc: 'UNESCO-recognized youth-in-medicine nonprofit (~1700 members). Organized 4 partnerships and help manage 35+ volunteers.', delay: '0.20s' },
-      { period: 'MAY 2025–PRESENT', role: 'CLO', org: 'Biocataalysis', desc: 'Help lead a 300+ participant biology competition; support 40+ staff plus outreach and partnerships.', delay: '0.26s' },
+      { period: 'JUN 2026–PRESENT', role: 'Research Intern', org: 'University of North Dakota', desc: 'Analyze the role of histone acetylation and EP300 in cellular senescence progression, using R for differential expression analysis.', delay: '0.08s' },
+      { period: 'APR 2026–PRESENT', role: 'Research Intern', org: 'University of Iowa', desc: 'Model mitochondrial Cox gene structures with AlphaFold3, FoldX and ChimeraX to map speciation pathways in Potamopyrgus antipodarum.', delay: '0.12s' },
+      { period: 'DEC 2025–PRESENT', role: 'Co-founder', org: 'Project ANA', desc: '501(c)(3) nonprofit addressing eating-disorder underdiagnosis in men. Co-lead 30+ members across research, advocacy (1400+ followers) and operations; co-authored a scoping review on OSF, with 2 IEEE conference papers in review. Connected with ANAD and NEDA and 10+ universities in 6 countries.', delay: '0.16s' },
+      { period: 'AUG 2025–PRESENT', role: 'Department Lead', org: 'International Youth Neuroscience Association (IYNA)', desc: 'Lead 20+ journal editors and handle submissions to the IYNA Journal. Co-organized the Neuroethics Essay Contest, the IYNA Ideathon and the youth neuroscience summer course; onboarded ~10 volunteers for Brain Bee Bootcamp. Moderator of the 9300+ member Discord.', delay: '0.20s' },
+      { period: 'DEC 2025–PRESENT', role: 'Executive Assistant', org: 'Dr. Interested', desc: 'UNESCO-recognized youth-in-medicine nonprofit (~1700 members). Organized 4 partnerships with 295+ signups, helped plan 3 in-person events with 300+ attendees, and help manage 35+ volunteers.', delay: '0.24s' },
+      { period: 'AUG 2026–PRESENT', role: 'Founder & Lead Developer', org: 'Gibby', desc: 'Physics-informed graph neural network that calculates Gibbs free energy (G, ΔG, ΔΔG) and binding affinity (~0.6 MAE in aqueous environments). Available as a ChimeraX extension and a standalone website.', delay: '0.28s' },
+      { period: 'JUN 2026–PRESENT', role: 'Author', org: 'Books4STEM Book Series', desc: 'Authored or edited 10+ children\u2019s books on the intersection of math and medicine, published on Amazon Kindle and in paperback.', delay: '0.32s' },
+      { period: 'MAY 2025–PRESENT', role: 'CLO', org: 'Biocataalysis', desc: 'Help lead a 300+ participant biology competition; support 40+ staff plus outreach and partnerships.', delay: '0.36s' },
     ];
 
     const education = [
-      { school: 'Wayzata High School', year: "'25–'29", detail: 'Class of 2029 · 3.96 GPA. AP Calculus AB/BC, AP Human Geography. Co-founder of Club RISE & Astronomy Club; VP of Operations, WHSA; Officer, AIMS.', delay: '0.12s' },
+      { school: 'Wayzata High School', year: "'25–'29", detail: 'Class of 2029 · 3.96 GPA. Coursework: AP Calculus AB/BC, AP Biology, AP Macroeconomics, AP Microeconomics, AP Human Geography, AP European History, AP World History, Linear Algebra & Differential Equations. Co-founder of Club RISE & Astronomy Club; VP of Operations, WHSA; Officer, AIMS.', delay: '0.12s' },
     ];
 
     const volunteering = [
       { org: 'HSMN', hours: '375+ HRS', role: 'Public Engagement Intern & Volunteer', detail: '4th-largest Hindu temple in North America. Front desk, gift shop and food service; organized ~6 events with 1500+ attendance.', delay: '0.16s' },
-      { org: 'Local Hospital Volunteer', hours: '325+ HRS', role: 'Nurse Server Attendant & Gift Shop', detail: '<40% acceptance. Gift-shop trainer; led volunteer sessions and a children\u2019s-book drive (25+ books donated).', delay: '0.24s' },
+      { org: 'North Memorial Maple Grove Hospital', hours: '360+ HRS', role: 'Nurse Server Attendant & Gift Shop', detail: '<40% acceptance. Gift-shop trainer; led volunteer sessions and a children\u2019s-book drive (25+ books donated).', delay: '0.24s' },
     ];
 
     const honorGroups = [
