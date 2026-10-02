@@ -369,6 +369,22 @@
   ::-webkit-scrollbar { width: 11px; }
   ::-webkit-scrollbar-thumb { background: #d8d0c7; border-radius: 99px; border: 3px solid #faf8f5; }
 </style>
+<style id="mobile-fixes">
+  /* Phone layout: the design uses inline styles, so these override by attribute. Desktop is untouched. */
+  @media (max-width: 760px) {
+    html { overflow-x: clip; }
+    main [style*="grid-template-columns"] { grid-template-columns: 1fr !important; gap: 36px !important; }
+    main [style*="repeat(4, 1fr)"] { grid-template-columns: 1fr 1fr !important; gap: 1px !important; }
+    main [style*="repeat(4, 1fr)"] > * { padding: 22px 18px !important; }
+    nav { flex-wrap: wrap; gap: 12px; padding: 14px 5vw !important; }
+    nav .navlinks { width: 100%; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    nav .navlinks::-webkit-scrollbar { display: none; }
+    nav .navlinks > * { flex: 0 0 auto; white-space: nowrap; }
+    main section, main > * > div[style*="padding: 8vh 6vw"] { padding-left: 5vw !important; padding-right: 5vw !important; }
+    main [style*="aspect-ratio: 1/1"] { max-width: 340px; width: calc(100% - 28px); margin: 0 auto; }
+    main [style*="width: 230px; height: 230px"] { width: 150px !important; height: 150px !important; }
+  }
+</style>
 </helmet>
 
 <div style="min-height: 100vh; display: flex; flex-direction: column; --ak: {{ accent }};" data-motion="{{ motionAttr }}">
