@@ -1,0 +1,87 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+}
+const {
+  title = 'Anish Kurra',
+  description = 'Personal website of Anish Kurra.',
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+  </head>
+  <body>
+    <main>
+      <slot />
+    </main>
+    <footer>© {new Date().getFullYear()} Anish Kurra</footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --bg: #fafaf9;
+    --fg: #1c1917;
+    --muted: #57534e;
+    --rule: #e7e5e4;
+    --link: #1d4ed8;
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141413;
+      --fg: #f5f5f4;
+      --muted: #a8a29e;
+      --rule: #2e2d2b;
+      --link: #93c5fd;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 17px/1.65 ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  }
+  main, footer {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  main { padding-top: 4.5rem; }
+  footer {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+  h1 { font-size: 2.1rem; line-height: 1.2; margin: 0 0 0.5rem; letter-spacing: -0.02em; }
+  h2 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    margin: 3rem 0 1rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--rule);
+  }
+  p { margin: 0 0 1rem; }
+  a { color: var(--link); text-underline-offset: 3px; }
+  ul { padding-left: 1.1rem; margin: 0; }
+  li { margin-bottom: 0.6rem; }
+  .muted { color: var(--muted); }
+</style>
