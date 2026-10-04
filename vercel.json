@@ -41,5 +41,12 @@
   "trailingSlash": false,
   "github": {
     "silent": true
-  }
+  },
+  "redirects": [
+    {
+      "source": "/favicon.svg",
+      "destination": "/favicon.ico",
+      "permanent": true
+    }
+  ]
 }
