@@ -225,6 +225,8 @@
     main [style*="max-width: calc(1080px"] { max-width: none !important; }
     nav .navlinks { width: 100%; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
     nav .navlinks::-webkit-scrollbar { display: none; }
-    nav .navlinks > * { flex: 0 0 auto; white-space: nowrap; padding: 7px 8px !important; }
+    nav .navlinks > * { flex: 0 0 auto; white-space: nowrap; padding: 7px 6px !important; font-size: 14px !important; }
+    nav .navlinks > a[href="/"] { display: none !important; }
+    nav .navlinks { justify-content: space-between; }
     main section, main div[style*="padding: 8vh 6vw"] { padding-left: 5vw !important; padding-right: 5vw !important; }
   }
